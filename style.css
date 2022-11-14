@@ -1,0 +1,387 @@
+/* font-family: 'Monda', sans-serif;
+font-family: 'Play', sans-serif;
+font-family: 'Press Start 2P', cursive;
+font-family: 'Roboto', sans-serif;
+font-family: 'Share Tech', sans-serif;
+font-family: 'Share Tech Mono', monospace;
+*/
+
+@font-face {
+    font-family: 'futura';
+    src: url(./assets/fonts/futura/futura\ medium\ bt.ttf);
+}
+
+@font-face {
+    font-family: 'futura-bold';
+    src: url(./assets/fonts/futura/Futura\ Bold\ font.ttf);
+}
+@font-face {
+    font-family: 'quartz';
+    src: url(./assets/fonts/quartz/Quartz.ttf);
+}
+
+@font-face {
+    font-family: 'ocr-a';
+    src: url(./assets/fonts/ocr-a/OCR-ABT.ttf);
+}
+
+.fonts {
+    background-color: var(--black);
+}
+
+#monda {
+    font-family: 'Monda', sans-serif;
+    font-size: 2rem;
+    color: white;
+}
+
+#play {
+    font-family: 'Play', sans-serif;
+    font-size: 2rem;
+    color: white;
+}
+
+#press-start {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2rem;
+    color: white;
+}
+
+#roboto {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+    color: white;
+}
+
+#share {
+    font-family: 'Share Tech', sans-serif;
+    font-size: 2rem;
+    color: white;
+}
+
+#share-mono {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 2rem;
+    color: white;
+}
+
+#futura {
+    font-family: 'futura';
+    font-size: 2rem;
+    color: white;
+}
+
+#quartz {
+    font-family: 'quartz';
+    font-size: 2rem;
+    color: white;
+}
+
+#ocr {
+    font-family: 'ocr-a';
+    font-size: 2rem;
+    color: white;
+}
+
+html {
+    width: 100%;
+    height: 100vh;
+    font-size: 18px;
+
+
+    --black: #1e1e1b;
+    --grey: #cbcec2;
+    --blue: #4565ad;
+    --red: #e94f35;
+    --green: #328734;
+    --brown: #ddbcb7;
+    --yellow: #e4d673;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--black);
+}
+
+#container {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--black);
+}
+
+.header {
+    margin: 0 11vw;
+    display: flex;
+    align-items: center;
+
+}
+
+
+.logo {
+    min-height: 80px;
+    min-width: 80px;
+    background-color: var(--red);
+    margin: 0 auto 0 0;
+}
+
+.nav-btn {
+    text-decoration: none;
+    padding: 10px 40px;
+    margin: 0 1.5vw;
+    font-size: 1.5rem;
+    font-family: 'ocr-a';
+    color: var(--grey);
+}
+
+.nav-btn:hover {
+    color: var(--red);
+}
+
+.nav-btn::before {
+    content: '>>';
+    color: var(--red);
+}
+
+
+#hero {
+    color: white;
+    margin: 20vh 11vw;
+    background-color: var(--black);
+}
+
+#hello {
+    font-size: 1.5rem;
+    color: var(--red);
+    font-family: 'Press Start 2P', cursive;
+    margin: 30px 0;
+}
+
+#name {
+    font-size: 2.5rem;
+    font-family: 'Press Start 2P', cursive;
+    margin: 40px 0;
+
+}
+
+#description {
+    width: 70vw;
+    font-size: 1.2rem;
+    font-family: 'futura';
+    color: var(--grey);
+    max-width: 900px;
+}
+
+.hero-btns-cont {
+    display: flex;
+    max-width: 900px;
+    margin: 40px 0;
+}
+
+.hero-btns-cont a {
+    text-decoration: none;
+    padding: 10px 40px;
+    margin: 50px 1.5vw;
+    font-size: 1.5rem;
+    font-family: 'ocr-a';
+    color: var(--grey);
+}
+
+.hero-btns-cont a:hover {
+    color: var(--red);
+}
+
+.hero-btns-cont i {
+    color: var(--red);
+    margin: 0 20px;
+}
+
+.sidebar-right {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.7rem;
+
+    right: 0;
+    bottom: 0; /* temp */
+    padding: 0px 1vw;
+
+    position: fixed;
+
+    height: 100vh;
+    align-items: center;
+
+}
+
+.sidebar-right::before {
+    content: '';
+    width: 1px;
+    height: 100vh;
+    background-color: var(--red);
+
+}
+
+.sidebar-right::after {
+    content: '';
+    width: 1px;
+    height: 100vh;
+    background-color: var(--red);
+
+}
+
+.sidebar-right a:hover {
+    color: var(--red);
+}
+
+.sidebar-right a {
+    text-decoration: none;
+    margin: 5px 0;
+
+    color: white;
+    padding: 5px;
+}
+
+.sidebar-left {
+    text-orientation: mixed;
+    writing-mode: vertical-rl;
+
+    display: flex;
+    align-items: center;
+
+    font-size: 1rem;
+
+    left: 0;
+    padding: 0 1vw;
+    bottom: 0px;
+
+    height: 100vh;
+
+    position: fixed;
+    font-family: 'Share Tech Mono', monospace;
+
+}
+
+.sidebar-left a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    letter-spacing: 0.4rem;
+    margin: 25px 0;
+
+}
+
+
+.sidebar-left i {
+    color: white;
+}
+
+.sidebar-left a:hover {
+    color: var(--red);
+}
+
+.sidebar-left::before {
+    content: '';
+    width: 1px;
+    height: 150vh;
+    background-color: var(--red);
+
+}
+
+.sidebar-left::after {
+    content: '';
+    width: 1px;
+    height: 100vh;
+    background-color: var(--red);
+
+}
+
+#about {
+    background-color: var(--black);
+    color: white;
+    margin: 40vh 15vw 40vh 11vw;
+}
+
+.about-title {
+    margin:  0 0 10vh 0;
+    padding: 0;
+
+    font-family: 'Press Start 2P', cursive;
+
+    font-size: 2.5rem;
+    text-align: left;
+    padding: 5vh auto;
+}
+
+.about-title::before {
+    content: '>>';
+    color: var(--red);
+}
+
+.about-content {
+    font-family: 'roboto';
+    font-size: 0.8rem;
+    line-height: 1.3rem;
+}
+.about-content p {
+    padding-top: 5vh;
+}
+
+
+.about-img-wrapper {
+    height: 400px;
+    width: 400px;
+    border-radius: 50%;
+    float: left;
+    shape-outside: circle();
+    padding: 30px;
+    border-right: 4px outset transparent;
+    border-left: 4px outset var(--red) ;
+    border-top: 4px outset transparent;
+    border-bottom: 4px outset transparent;
+
+}
+.about-img-wrapper img {
+/*     height: 400px;
+    width: 400px;
+    border-radius: 50%;
+    float: left;
+    shape-outside: circle();
+ */    
+ 
+/*     background-color: white;
+    border-right: 4px outset transparent;
+    border-left: 4px outset var(--red) ;
+    border-top: 4px outset transparent;
+    border-bottom: 4px outset transparent;
+ */
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+/*     float: inherit;
+ */    shape-outside: circle();
+ padding: 8px;
+ background-color: white;
+ margin: 0;
+}
+
+
+
+#projects {
+
+}
+
+
+/* 
+Do List: 
+>> add media query such that header turns into menu button after screen size decrases
+>> animate hello world and Im arhian albis such that the animation shows typing one by 
+    one letters and the paragraph under them to show up after it finishees typing
+>> redesing PROJECTS and RESUME Btns on the hero section so that they look different from 
+    the nav btns
+>> make header stick as you scroll down
+>> style scrollbar
+>> make sidebars stick as you scroll down and eliminate them on the media query
+*/
