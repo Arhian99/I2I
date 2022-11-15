@@ -96,6 +96,8 @@ html {
     --green: #328734;
     --brown: #ddbcb7;
     --yellow: #e4d673;
+
+    --svg-filter-grey: invert(99%) sepia(3%) saturate(827%) hue-rotate(18deg) brightness(87%) contrast(83%);
 }
 
 body {
@@ -115,18 +117,31 @@ body {
 }
 
 .header {
-    margin: 0 11vw;
+    margin: 3vh 11vw 0 11vw;
     display: flex;
     align-items: center;
-
 }
 
 
 .logo {
-    min-height: 80px;
-    min-width: 80px;
-    background-color: var(--red);
+    min-height: 65px;
+    min-width: 65px;
+    
+    display: flex;
+    place-content: center;
     margin: 0 auto 0 0;
+}
+.logo h1 {
+    margin: 0;
+    place-self: center;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
+    border-bottom: 2px solid var(--red);
+    border-top: 2px solid var(--red);
+
+    padding: 1.3vh 0;
+
 }
 
 .nav-btn {
@@ -197,7 +212,7 @@ body {
 
 .hero-btns-cont i {
     color: var(--red);
-    margin: 0 20px;
+    margin: 0 5px;
 }
 
 .sidebar-right {
@@ -211,24 +226,24 @@ body {
 
     position: fixed;
 
-    height: 100vh;
+    height: 50vh;
     align-items: center;
 
 }
 
-.sidebar-right::before {
+/* .sidebar-right::before {
     content: '';
     width: 1px;
     height: 100vh;
     background-color: var(--red);
-
-}
+} */
 
 .sidebar-right::after {
     content: '';
     width: 1px;
     height: 100vh;
     background-color: var(--red);
+    box-shadow: 0px 0px 5px 1px red;
 
 }
 
@@ -257,7 +272,7 @@ body {
     padding: 0 1vw;
     bottom: 0px;
 
-    height: 100vh;
+    height: 80vh;
 
     position: fixed;
     font-family: 'Share Tech Mono', monospace;
@@ -269,7 +284,7 @@ body {
     color: white;
     font-size: 1rem;
     letter-spacing: 0.4rem;
-    margin: 25px 0;
+    margin: 10px 0;
 
 }
 
@@ -282,20 +297,19 @@ body {
     color: var(--red);
 }
 
-.sidebar-left::before {
+/* .sidebar-left::before {
     content: '';
     width: 1px;
     height: 150vh;
     background-color: var(--red);
-
-}
+} */
 
 .sidebar-left::after {
     content: '';
     width: 1px;
     height: 100vh;
     background-color: var(--red);
-
+    box-shadow: 0px 0px 5px 1px red;
 }
 
 #about {
@@ -305,7 +319,7 @@ body {
 }
 
 .about-title {
-    margin:  0 0 10vh 0;
+    margin:  0 0 4vh 0;
     padding: 0;
 
     font-family: 'Press Start 2P', cursive;
@@ -327,16 +341,17 @@ body {
 }
 .about-content p {
     padding-top: 5vh;
+    max-width: 850px;
 }
 
 
 .about-img-wrapper {
-    height: 400px;
-    width: 400px;
+    height: 300px;
+    width: 300px;
     border-radius: 50%;
     float: left;
     shape-outside: circle();
-    padding: 30px;
+    padding: 35px;
     border-right: 4px outset transparent;
     border-left: 4px outset var(--red) ;
     border-top: 4px outset transparent;
@@ -344,34 +359,220 @@ body {
 
 }
 .about-img-wrapper img {
-/*     height: 400px;
-    width: 400px;
-    border-radius: 50%;
-    float: left;
-    shape-outside: circle();
- */    
- 
-/*     background-color: white;
-    border-right: 4px outset transparent;
-    border-left: 4px outset var(--red) ;
-    border-top: 4px outset transparent;
-    border-bottom: 4px outset transparent;
- */
     width: 100%;
     height: 100%;
     border-radius: 50%;
-/*     float: inherit;
- */    shape-outside: circle();
- padding: 8px;
- background-color: white;
- margin: 0;
+    shape-outside: circle();
+    padding: 8px;
+    background-color: white;
+    margin: 0;
 }
 
 
 
 #projects {
+    margin: 40vh 11vw;
+    color: white;
+    padding: 10vh 0;
+}
+
+.projects-title {
+    margin:  0 0 10vh 0;
+    padding: 0;
+
+    font-family: 'Press Start 2P', cursive;
+
+    font-size: 2.5rem;
+    text-align: left;
+    padding: 5vh auto;
+}
+
+.projects-title::before {
+    content: '>>';
+    color: var(--red);
+}
+
+.projects-cont {
+    display: grid;
+    grid-template: auto / 1fr 9fr;
+    column-gap: 5vw;
+    width: 100%;
+}
+
+.projects-btns-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.projects-btns-cont button {
+    padding: 15px 15px 15px 20px;
+    background-color: var(--black);
+    color: white;
+    border: none;
+    font-family: 'quartz';
+    letter-spacing: 0.2rem;
+    font-size: 1.5rem;
+    border-bottom-right-radius: 50px;    
+    border-top-right-radius: 50px;
+
+    border-left: 3px solid #cbcec24d;
+}
+
+
+/* START: APPLY THIS STYLE ON CLICK/ WHEN SELECTED */
+.projects-btns-cont button:nth-child(3) {
+    color: var(--red);
+}
+
+.tab {
+    content: '';
+    background-color: var(--red);
+    height: 60px;
+    width: 3px;
+    box-shadow: 0px 0px 5px 1px red;
+    border-radius: 30px;
+    position: absolute;
+    top: 120px;
+}
+/* END: APPLY THIS STYLE ON CLICK/ WHEN SELECTED */
+
+
+.projects-btns-cont button:hover {
+    background-color: #e950354f;
+    color: white;
+    cursor: pointer;
+}
+
+/* .project-info-cont {
+    background-color: white;
+} */
+
+
+
+.project-info {
+    background-color: var(--black);
+    padding: 1vh 0 0 0;
+}
+.project-screenshot {
+    width: 100%;
+    height: 70vh;
 
 }
+
+.project-title {
+    margin: 0;
+    font-family: 'futura-bold';
+    font-size: 1.5rem;
+    color: white;
+    letter-spacing: 0.1rem;
+}
+
+.project-title::before {
+    content: '<';
+    color: var(--red);
+    font-size: 2rem;
+    font-family: 'futura-bold';
+}
+
+.project-title::after {
+    content: '/>';
+    color: var(--red);
+    font-size: 2rem;
+    font-family: 'futura-bold';
+}
+
+.project-desc {
+    margin: 1vh 0 0 0;
+    font-family: 'futura';
+    font-size: 0.9rem;
+    color: var(--grey);
+
+}
+
+
+.tags-cont {
+    margin-bottom: 0;
+    text-align: right;
+    padding: 0 4vw;
+}
+ 
+.tags {
+    height: 24px;
+    width: 24px;
+    margin: 0.5vh 0.5vw;
+}
+
+#html {
+    filter: invert(56%) sepia(75%) saturate(3568%) hue-rotate(344deg) brightness(96%) contrast(97%);    /* #f26528 */
+}
+
+#css {
+    filter: invert(50%) sepia(94%) saturate(378%) hue-rotate(153deg) brightness(97%) contrast(91%);    /* #2faadf */
+}
+
+#js {
+    filter: invert(98%) sepia(66%) saturate(2519%) hue-rotate(323deg) brightness(104%) contrast(101%);
+    /* #ffd93b */
+}
+
+/* .projects-btns-before {
+    height: 24px;
+    width: 24px;
+    filter: invert(40%) sepia(84%) saturate(2775%) hue-rotate(342deg) brightness(96%) contrast(91%);
+    margin: 0 0.4vw;
+} */
+
+
+
+
+#contact {
+    color: white;
+    margin: 20vh 11vw;
+    background-color: var(--black);
+}
+
+.contact-title {
+    margin:  0 0 10vh 0;
+
+    font-family: 'Press Start 2P', cursive;
+
+    font-size: 2.5rem;
+    text-align: left;
+    padding: 8vh auto;
+}
+
+.contact-title::before {
+    content: '>>';
+    color: var(--red);
+}
+.contact-card-cont {
+    display: grid;
+    grid-template: max-content min-content / max-content 1fr;
+    column-gap: 5vw;
+}
+
+.contact-card-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    padding: 10px;
+    border: 2px solid white;
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.contact-card-info {
+    grid-area: 1/ 2 /2 /3;
+}
+
+.contact-card-skills {
+    grid-area: 2 / 1 / 3 / 3;
+}
+
+
+
+
 
 
 /* 
@@ -384,4 +585,15 @@ Do List:
 >> make header stick as you scroll down
 >> style scrollbar
 >> make sidebars stick as you scroll down and eliminate them on the media query
+>>redesign the scroll bar
+
+>> when you click the project slider button it repositions the screen so the top is at the
+top of the project screen and the project title is no longer visible.
+
+>> resize the header such that when you make the window thinner the header resizes and a horizontal
+scroll bar does NOT appear
+
+>> make the logo animated such that it opens up and the letters come out of the two borders
+
+
 */
