@@ -1224,6 +1224,7 @@ body {
 
 .media-header > .logo h1:hover {
     color: var(--red);
+    cursor: pointer;
 }
 
 .media-menu-cont > .nav-btn:hover {
@@ -1419,8 +1420,8 @@ body {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin: 3vh 5vw 0 11vw;
-    }
+/*         margin: 3vh 5vw 0 11vw;
+ */    }
 
 /*     #hero {
         margin: 10vh 0vw;
