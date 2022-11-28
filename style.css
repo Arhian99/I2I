@@ -87,6 +87,7 @@ html {
     width: 100%;
     height: 100vh;
     font-size: 18px;
+    scroll-behavior: smooth;
 
     --current-color: color: inherit;
 
@@ -99,6 +100,7 @@ html {
     --yellow: #e4d673;
     --opaque-grey: #cbcec261 /* turn to filter notation so it can be applied to 'tags' html/css/js under projects */
 
+    --transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
     --svg-filter-grey: invert(99%) sepia(3%) saturate(827%) hue-rotate(18deg) brightness(87%) contrast(83%);
 }
 
@@ -113,23 +115,34 @@ body {
 
 /* width */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 15px;
+    margin: 30px;
   }
   
   /* Track */
   ::-webkit-scrollbar-track {
-    background: var(--black);
+    background: transparent;
   }
   
   /* Handle */
   ::-webkit-scrollbar-thumb {
     background: #cbcec239;
     border-radius: 50px;
-  }
+}
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: var(--red);
+  }
+
+  .material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 700,
+    'GRAD' 0,
+    'opsz' 48;
+
+    text-align: center;
   }
 
 #container {
@@ -138,24 +151,90 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--black);
+    overflow-y: scroll;
+    scroll-snap-type: y proximity;
+
 }
+
 
 .header {
     margin: 3vh 11vw 0 11vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    animation: 1s ease-in-out 0s 1 slideFromTop;
+
+
+}
+@-webkit-keyframes slideFromTop {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
 
 
+.slideFromLeft {
+    animation: 2s ease-in-out 0s 1 slideFromLeft;
+}
+@-webkit-keyframes slideFromLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 0.25;
+    }
+    
+    75% {
+        opacity: 0.75;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.slideFromRight {
+    animation: 2s ease-in-out 0s 1 slideFromRight;
+}
+@-webkit-keyframes slideFromRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 0.25;
+    }
+    
+    75% {
+        opacity: 0.75;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+
 .logo {
-    min-height: 65px;
-    min-width: 65px;
     
     display: flex;
     place-content: center;
     margin: 0;
+
+
 }
+ 
+
 .logo h1 {
     margin: 0;
     place-self: center;
@@ -166,16 +245,16 @@ body {
     border-top: 2px solid var(--red);
 
     padding: 1.3vh 0;
-
 }
 
 .nav-btn {
     text-decoration: none;
     padding: 0;
-    margin: 0;
+    margin: 0 10px;
     font-size: 1.5rem;
     font-family: 'ocr-a';
     color: var(--grey);
+    cursor: pointer;
 }
 
 .nav-btn:hover {
@@ -234,14 +313,33 @@ body {
     color: var(--red);
     margin-right: 1vw;
 }
-
 .word::after {
     color: var(--red);
     content: '_';
     background-color: var(--red);
     height: inherit;
     width: inherit;
+    animation: blinking-word 1s linear infinite;
+    animation-delay: 3s;
 }
+
+#hero-project-btn, #hero-contact-btn {
+    display: none;
+}
+
+@-webkit-keyframes blinking-word {
+    0% { opacity: 0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+/* span#word {
+    color: var(--red);
+    content: '_';
+    background-color: var(--red);
+    height: inherit;
+    width: inherit;
+} */
 
 /* #word2After {
     color: var(--red);
@@ -256,6 +354,7 @@ body {
     display: flex;
     max-width: 900px;
     margin: 40px 0;
+    justify-content: center;
 }
 
 .hero-btns-cont a {
@@ -265,6 +364,7 @@ body {
     font-size: 1.5rem;
     font-family: 'ocr-a';
     color: var(--grey);
+    cursor: pointer;
 }
 
 /* .hero-btns-cont a::after {
@@ -291,7 +391,27 @@ body {
 
     height: 50vh;
     align-items: center;
+    animation: 1s ease-in-out 0s 1 slideFromBottom;
+}
 
+@-webkit-keyframes slideFromBottom {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 0.25;
+    }
+    
+    75% {
+        opacity: 0.75;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 /* .sidebar-right::before {
@@ -312,6 +432,24 @@ body {
 
 .sidebar-right a:hover {
     color: var(--red);
+    animation: 2s ease 350ms 1 flip-x;
+}
+
+@-webkit-keyframes flip-x {
+    0% {
+        opacity: 0;
+        transform: rotateX(90deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: rotateX(720deg);
+    }
+    100% {
+        /* animate nothing to pause animation at the end */
+        opacity: 1;
+        transform: rotateX(720deg);
+    }
 }
 
 .sidebar-right a {
@@ -329,8 +467,6 @@ body {
     display: flex;
     align-items: center;
 
-    font-size: 1rem;
-
     left: 0;
     padding: 0 1vw;
     bottom: 0px;
@@ -339,33 +475,28 @@ body {
 
     position: fixed;
     font-family: 'Share Tech Mono', monospace;
+    animation: 1s ease-in-out 0s 1 slideFromBottom;
 
 }
 
 .sidebar-left a {
     text-decoration: none;
     color: white;
-    font-size: 1rem;
+    font-size: 0.9rem;
     letter-spacing: 0.4rem;
     margin: 10px 0;
+    transition: var(--transition);
+
 
 }
 
 
-.sidebar-left i {
-    color: white;
-}
 
 .sidebar-left a:hover {
     color: var(--red);
+    transform: translate(4px, 0);
+    font-size: 0.95rem;
 }
-
-/* .sidebar-left::before {
-    content: '';
-    width: 1px;
-    height: 150vh;
-    background-color: var(--red);
-} */
 
 .sidebar-left::after {
     content: '';
@@ -376,6 +507,7 @@ body {
 }
 
 #humor { color: #cbcec242;}
+
 .scroll {
 /*     width: 100%;
  */    /* background-color: var(--red); */
@@ -384,25 +516,23 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-
-
+    display: none;
 }
 
 .scroll a {
     position: relative;
-    bottom: 0;
+    bottom: 1.6vh;
     left: 50%;
     display: inline-block;
     -webkit-transform: translate(0, -50%);
     transform: translate(0, -50%);
-    color: #fff;
+    color: white;
     font : normal 400 20px/1 'Josefin Sans', sans-serif;
     letter-spacing: .1em;
     text-decoration: none;
     transition: opacity .3s;
 
     padding-top: 5vw;
-
 }
 
 .scroll a:hover {
@@ -417,7 +547,7 @@ body {
     width: 30px;
     height: 50px;
     margin-left: -15px;
-    border: 2px solid #fff;
+    border: 2px solid white;
     border-radius: 50px;
     box-sizing: border-box;
 }
@@ -430,7 +560,7 @@ body {
     width: 6px;
     height: 6px;
     margin-left: -3px;
-    background-color: #fff;
+    background-color: white;
     border-radius: 100%;
     -webkit-animation: sdb10 2s infinite;
     animation: sdb10 2s infinite;
@@ -477,6 +607,13 @@ body {
     background-color: var(--black);
     color: white;
     margin: 40vh 15vw 40vh 11vw;
+/*     padding-top: 5vh;
+ */
+ 
+ /*     scroll-snap-align: start;
+ */
+
+
 }
 
 .about-title {
@@ -487,7 +624,7 @@ body {
 
     font-size: 2.5rem;
     text-align: left;
-    padding: 5vh auto;
+    padding: 7vh auto;
 }
 
 .about-title::before {
@@ -499,11 +636,21 @@ body {
     font-family: 'roboto';
     font-size: 0.8rem;
     line-height: 1.3rem;
+    opacity: 0;
+
 }
 .about-content p {
     padding-top: 5vh;
     max-width: 850px;
+    opacity: 0;
 }
+
+#active {
+    opacity: 1;
+}
+
+
+
 
 
 .about-img-wrapper {
@@ -517,6 +664,11 @@ body {
     border-left: 4px outset var(--red) ;
     border-top: 4px outset transparent;
     border-bottom: 4px outset transparent;
+    opacity: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 }
 .about-img-wrapper img {
@@ -534,7 +686,10 @@ body {
 #projects {
     margin: 40vh 11vw;
     color: white;
-    padding: 10vh 0;
+    padding: 5vh 0;
+/*     scroll-snap-align: start;
+ */    
+
 }
 
 .projects-title {
@@ -558,6 +713,13 @@ body {
     grid-template: auto / 1fr 9fr;
     column-gap: 5vw;
     width: 100%;
+    opacity: 0;
+/*     scroll-snap-align: start;
+    scroll-snap-align: center;
+ */
+/*     scroll-snap-align: end;
+ */
+
 }
 
 .projects-btns-cont {
@@ -565,6 +727,8 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     position: relative;
+    opacity: 0;
+
 }
 
 .projects-btns-cont button {
@@ -606,9 +770,9 @@ body {
     cursor: pointer;
 }
 
-/* .project-info-cont {
-    background-color: white;
-} */
+.project-info-cont {
+    opacity: 0;
+}
 
 
 
@@ -620,8 +784,39 @@ body {
     width: 100%;
     height: 70vh;
 
+
+    background-color: white;
+    position: relative;
 }
 
+.next-btn, .prev-btn {
+    color: white;
+    width: max-content;
+    height: max-content;
+    justify-content: center;
+    align-items: center;
+    margin: 1vw;
+    padding: 10px;
+    border-radius: 50px;
+    background-color: #cbcec27b;
+    position: absolute;
+    bottom: 40%;
+    cursor: pointer;
+
+    display: none;
+}
+
+.next-btn {
+    right: 0;
+}
+
+.prev-btn {
+    left: 0;
+}
+
+.next-btn:hover, .prev-btn:hover {
+    background-color: var(--black);
+}
 .project-title {
     margin: 0;
     font-family: 'futura-bold';
@@ -690,8 +885,12 @@ body {
 
 #contact {
     color: white;
-    margin: 10vh 11vw;
+    margin: 10vh 11vw 0 11vw;
     background-color: var(--black);
+    padding: 5vh 0;
+/*     scroll-snap-align: start;
+ */
+
 }
 
 .contact-title {
@@ -711,6 +910,12 @@ body {
 
 .contact-content {
     padding: 5vh 0;
+/*     scroll-snap-align: start;
+    scroll-snap-align: end;
+ */
+
+ opacity: 0;
+
 }
 .contact-card-cont {
     display: grid;
@@ -718,6 +923,7 @@ body {
     column-gap: 5vw;
     width: inherit;
     max-width: max-content;
+    opacity: 0;
 }
 
 
@@ -728,6 +934,10 @@ body {
     padding: 10px;
     border: 2px solid white;
     grid-area: 1 / 1 / 2 / 2;
+}
+
+.slideFromBottom {
+    animation: 1.5s ease-in-out 0s 1 slideFromBottom;
 }
 
 .contact-card-info {
@@ -841,7 +1051,7 @@ body {
 .contact-card-btns-cont i {
     font-size: 24px;
     color: white;
-    padding: 0.5vw;
+    padding: 5px;
     border: 1px solid white;
     border-radius: 100px;
     margin: 0 0.5vw;
@@ -849,6 +1059,9 @@ body {
 
 .contact-card-btns-cont i:hover{
     background-color: var(--red);
+    animation: 2s ease 350ms 1 flip-x;
+
+
 }
 
 .contact-form {
@@ -857,6 +1070,8 @@ body {
     grid-area: 2 / 2 / 3 / 3;
     width: 100%;
     margin: 6vh 0;
+    opacity: 0;
+
 }
 
 .contact-form input, .contact-form textarea {
@@ -887,6 +1102,12 @@ body {
     cursor: pointer;
 }
 
+.contact-form button:hover {
+    background-color: white;
+    color: var(--red);
+
+}
+
 
 #contact-form-title {
     color: white;
@@ -897,13 +1118,11 @@ body {
 }
 
 #footer {
-/*     position: absolute;
-    bottom: 0;
- */    z-index: 999999;
-    margin-top: 15vh;
+    z-index: 999999;
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
 
 .footer-name {
@@ -920,26 +1139,412 @@ body {
 
 
 
+.media-header {
+    display: none;
+    margin: 3vh 2vw 0 30px;
+}
+
+.media-menu-cont {
+    position: absolute;
+    left: -30px;
+    margin-top: 20px;
+    background-color: var(--black);
+    height: 100vh;
+    width: 95vw;
+    display: none;
+    flex-direction: column;
+    z-index: 100000000000;
+    padding: 0;
+    margin: 0;
+}
+
+#show {
+    display: flex;
+}
+
+/* .header {
+    margin: 3vh 11vw 0 11vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: 1s ease-out 0s 1 slideFromTop;
+
+
+}
+@-webkit-keyframes slideFromTop {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+ */
+
+
+
+
+
+
+
+
+
+
+.media-menu {
+    position: relative;
+    cursor: pointer;
+}
+
+.media-menu span {
+    display: block;
+    color: white;
+    font-size: 3rem;
+    border-radius: 10px;
+}
+
+.media-menu span:hover {
+    background-color: var(--red);
+} /* check if desired style/behavior should be on hover or on click */
+
+
+.media-menu-cont > .nav-btn::before {
+    content: '';
+}
+
+.media-menu-cont > .nav-btn {
+    padding: 2vh 0 2vh 30px;
+    margin: 0;
+    font-size: 2rem;
+    color: white;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+
+}
+
+.media-header > .logo h1:hover {
+    color: var(--red);
+}
+
+.media-menu-cont > .nav-btn:hover {
+    color: white;
+    background-color: var(--red);
+}
+
+@media (max-width: 425px) {
+
+    /* Website-wide */
+    html {
+        font-size: 16px;
+    }
+
+    .sidebar-left, .sidebar-right, .header {
+        display: none;
+    }
+
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    #about, #projects, #contact {
+        margin: 40vh 0vw;
+    }
+
+    .about-content, .project-info, .contact-content {
+        padding-left: 30px;
+    }
+
+    .about-title.word::before, .projects-title.word::before, .contact-title.word::before {
+        content: '>';
+    }
+
+    .about-title, .projects-title, .contact-title {
+        font-size: 2rem;
+    }
+
+    /* HOME PAGE (HERO) */
+
+    .media-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #hero {
+        margin: 10vh 0vw;
+        padding-left: 30px;
+        text-align: left;
+    }
+
+    #name {
+        margin: 20px 0;
+    }
+
+    #description {
+        width: 80vw;
+    }
+
+    .hero-btns-cont {
+        flex-direction: column;
+        margin: 5vh 0;
+    }
+
+    .hero-btns-cont a {
+        padding: 0px;
+        margin: 25px 0;
+        text-align: left;
+    }
+    
+    #hero-project-btn, #hero-contact-btn {
+        display: block;
+    }
+
+
+    /* ABOUT PAGE */
+    
+    .about-img-wrapper {
+        width: 150px;
+        height: 150px;
+        padding: 10px;
+    }
+
+
+    /* PROJECTS PAGE */
+
+    .projects-title {
+        margin: 0 0 5vh 0;
+    }
+
+    .projects-cont {
+        display: block;
+        width: inherit;
+    }
+
+    .projects-btns-cont {
+        display: none;
+    }
+
+    .next-btn, .prev-btn {
+        display: flex;
+    
+    }
+
+
+    /* CONTACT PAGE */
+    
+    #contact {
+        margin-bottom: 0;
+    }
+
+    .contact-title {
+        margin: 0 0 5vh 0;
+    }
+    
+    .contact-card-cont {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contact-content {
+        padding: 0 0 0 30px;
+    }
+
+    .contact-card-btns-cont {
+        padding: 0;
+        justify-content: center;
+    }
+
+    .contact-card-btns-cont a {
+        margin: 0 10px;
+    }
+
+    .contact-card-name {
+        margin-bottom: 5vh;
+    }
+    .contact-card-img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .contact-card-info {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .contact-form {
+        margin: 2vh 0;
+    }
+
+    #contact-form-title {
+        text-align: center;
+    }
+}
+
+
+@media (min-width: 425px) and (max-width: 768px) {
+    /* Website-wide */
+/*     html {
+        font-size: 16px;
+    }
+ */
+    .sidebar-left, .sidebar-right, .header {
+        display: none;
+    }
+
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+/*     #about, #projects, #contact {
+        margin: 40vh 0vw;
+    }
+
+    .about-content, .project-info, .contact-content {
+        padding-left: 30px;
+    }
+ */
+    .about-title.word::before, .projects-title.word::before, .contact-title.word::before {
+        content: '>';
+    }
+
+/*     .about-title, .projects-title, .contact-title {
+        font-size: 2rem;
+    }
+ */
+    /* HOME PAGE (HERO) */
+
+    .media-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 3vh 5vw 0 11vw;
+    }
+
+/*     #hero {
+        margin: 10vh 0vw;
+        padding-left: 30px;
+        text-align: left;
+    }
+
+    #name {
+        margin: 20px 0;
+    }
+
+    #description {
+        width: 80vw;
+    }
+ */
+    .hero-btns-cont {
+        flex-direction: column;
+        margin: 5vh 0;
+    }
+
+    .hero-btns-cont a {
+        padding: 0px;
+        margin: 25px 0;
+        text-align: left;
+    }
+    
+    #hero-project-btn, #hero-contact-btn {
+        display: block;
+    }
+
+
+    /* ABOUT PAGE */
+    
+    .about-img-wrapper {
+        width: 200px;
+        height: 200px;
+        padding: 20px;
+    }
+
+
+    /* PROJECTS PAGE */
+
+    .projects-title {
+        margin: 0 0 5vh 0;
+    }
+
+    .projects-cont {
+        display: block;
+        width: inherit;
+    }
+
+    .projects-btns-cont {
+        display: none;
+    }
+
+    .next-btn, .prev-btn {
+        display: flex;
+    
+    }
+
+
+    /* CONTACT PAGE */
+    
+    #contact {
+        margin-bottom: 0;
+    }
+
+    .contact-title {
+        margin: 0 0 5vh 0;
+    }
+    
+    .contact-card-cont {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contact-content {
+        padding: 0 0 0 30px;
+    }
+
+    .contact-card-btns-cont {
+        padding: 0;
+        justify-content: center;
+    }
+
+    .contact-card-btns-cont a {
+        margin: 0 10px;
+    }
+
+    .contact-card-name {
+        margin-bottom: 5vh;
+    }
+    .contact-card-img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .contact-card-info {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .contact-form {
+        margin: 2vh 0;
+    }
+
+    #contact-form-title {
+        text-align: center;
+    }
+}
+
+
 /* 
 Do List: 
->> add media query such that header turns into menu button after screen size decrases
->> animate hello world and Im arhian albis such that the animation shows typing one by 
-    one letters and the paragraph under them to show up after it finishees typing
->> redesing PROJECTS and RESUME Btns on the hero section so that they look different from 
-    the nav btns
+
 >> make header stick as you scroll down
->> style scrollbar
->> make sidebars stick as you scroll down and eliminate them on the media query
->>redesign the scroll bar
 
 >> when you click the project slider button it repositions the screen so the top is at the
 top of the project screen and the project title is no longer visible.
 
->> resize the header such that when you make the window thinner the header resizes and a horizontal
-scroll bar does NOT appear
 
 >> make the logo animated such that it opens up and the letters come out of the two borders
 
->> create scrolling animation/effect when linking to the deifferente sectionss from the homepage
 >> FIX RESUME LINKS!!!
 */

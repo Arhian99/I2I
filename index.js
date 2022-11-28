@@ -1,148 +1,42 @@
 
-/* 
-var words = ['Hello, World!', 'Im Arhian Albis Ramos'],
-part,
-i = 0,
-offset = 0,
-len = words.length,
-forwards = true,
-skip_count = 0,
-skip_delay = 15,
-speed = 150;
+let about = document.querySelector('#about-nav'),
+projects = document.querySelector('#projects'),
+contact = document.querySelector('#contact'),
+home = document.querySelector('#home'),
+menu = document.querySelector('.media-menu');
 
 
-var wordflick = function () {
-  setInterval(function () {
-    if (forwards) {
-      if (offset >= words[i].length) {
-        ++skip_count;
-        if (skip_count == skip_delay) {
-          forwards = false;
-          skip_count = 0;
-        }
-      }
-    }
-    else {
-      if (offset == 0) {
-        forwards = true;
-        i++;
-        offset = 0;
-        if (i >= len) {
-          i = 0;
-        }
-      }
-    }
-    part = words[i].substr(0, offset);
-    if (skip_count == 0) {
-      if (forwards) {
-        offset++;
-      }
-      else {
-        offset--;
-      }
-    }
-    document.querySelector('.word').innerHTML = `${part}`;
-  },speed);
-};
+menu.addEventListener('click', () => {
+  if (document.querySelector('.media-menu-cont').id == 'show') {
+    document.querySelector('.media-menu-cont').id = '';
+  }
 
-document.addEventListener('DOMContentLoaded', function () {
-    wordflick();
-}); */
-
-/* 
-
-let words = ['Hello, World!', 'I\'m Arhian Albis Ramos', 'A self-taught web developer who is passionate about solving problems and building things with code. I am currently looking for new opportunities. Take a look around at some of the projects I\'ve built!','PROJECTS', 'RESUME'],
-part,
-i = 0,
-offset = 0,
-len = words.length,
-speed = 80;
-
-function wordFlick () {
-    setInterval(() => {
-        if (offset > words[i].length) {
-            i++;
-            offset = 0;
-            if (i == 1) {
-                document.querySelector('.word').classList.remove('word');
-                document.querySelector('#name').classList.add('word');
-            }
-
-            else if (i == 2) {
-                document.querySelector('.word').classList.remove('word');
-                document.querySelector('#description').classList.add('word');
-            }
+  else document.querySelector('.media-menu-cont').id = 'show';
+})
 
 
-            else if (i == 3) {
-                document.querySelector('.word').classList.remove('word');
-                document.querySelector('#hero-project-btn').classList.add('word');
-            }
+let multWords = [
+  'Hello, World!', 
+  'I\'m Arhian Albis Ramos', 
+  'A self-taught web developer who is passionate about solving problems and building things with code. I am currently looking for new opportunities. Take a look around at some of the projects I\'ve built!',
+  'PROJECTS', 
+  'RESUME', 
+  'ABOUT ME', 
+  'PROJECTS', 
+  'CONTACT'
+];
 
-            else if (i == 4) {
-                document.querySelector('.word').classList.remove('word');
-                document.querySelector('#hero-resume-btn').classList.add('word');
-            }
-
-        }
-
-        
-        part = words[i].substr(0, offset);
-        offset++;
-        document.querySelector('.word').innerHTML = `${part}`;
+let scrollAppear = setInterval(() => {
+  document.querySelector('.scroll').style.display = 'block';
+  clearInterval(scrollAppear);
+}, 5500);
 
 
 
-    }, speed)
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-    wordFlick();
-}); */
-
-let multWords = ['Hello, World!', 'I\'m Arhian Albis Ramos', 'A self-taught web developer who is passionate about solving problems and building things with code. I am currently looking for new opportunities. Take a look around at some of the projects I\'ve built!','PROJECTS', 'RESUME'];
-
-/* 
-function letterEffect() {
-    let speed = 150,
-    letter = 0,
-    i = 0;
-    let interval = setInterval(() => {
-        if (multWords[i] == undefined) {
-            i=0;
-            letter=0;
-            clearInterval(interval);
-            return;
-        }
-
-        if(letter > multWords[i].length) {
-            i++;
-            letter = 0;
-            document.querySelector('.word').classList.remove('word');
-
-            if (i==1) {
-                document.querySelector('#name').classList.add('word');
-            }
-
-            else if (i==2) {
-                document.querySelector('#hero-project-btn').classList.add('word');
-            }
-
-            else if(i==3) {
-                document.querySelector('#hero-resume-btn').classList.add('word');
-            }
-        }
-        part = multWords[i].substr(0, letter);
-        document.querySelector('.word').innerHTML= `${part}`;
-        letter++;
-    }, speed)
-} */
-
-/* let singleWords = 'A self-taught web developer who is passionate about solving problems and building things with code. I am currently looking for new opportunities. Take a look around at some of the projects I\'ve built!'
- */
-function letterEffect2(word) {
+function typingAnimationHome(word) {
     let letter = 0,
     speed=150;
+
     if (this == document.querySelector('#description')) {
         speed = 20;
     }
@@ -153,7 +47,7 @@ function letterEffect2(word) {
         if(letter>word.length) {
             letter=0;
             clearInterval(interval);
-            if (this !== document.querySelector('#description')) {
+            if (this !== document.querySelector('#name')) {
                 this.classList.remove('word');
             }
             return
@@ -165,17 +59,148 @@ function letterEffect2(word) {
     }, speed)
 }
 
-/* document.addEventListener('DOMContentLoaded', letterEffect2.call(document.querySelector('#hello'), multWords[0]));
- */
+function typingAnimationHandle(entries, observer) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting /* && entry.intersectionRatio >= 0.5 */) {
+      let letter = 0,
+      part,
+      animatedText,
+      speed = 150,
+      element;
 
-document.addEventListener('DOMContentLoaded', letterEffect2.call(document.querySelector('#name'), multWords[1]));
-document.addEventListener('DOMContentLoaded', letterEffect2.call(document.querySelector('#description'), multWords[2]));
-document.addEventListener('DOMContentLoaded', letterEffect2.call(document.querySelector('#hero-project-btn'), multWords[3]));
-document.addEventListener('DOMContentLoaded', letterEffect2.call(document.querySelector('#hero-resume-btn'), multWords[4]));
+      function animate() {
+        let interval = setInterval( () => {
+          if (letter > this.length) {
+            letter = 0;
+            clearInterval(interval);
+            return
+          }
+          part = this.substr(0, letter);
+          element.innerHTML = `${part}`;
+          letter++;
+        }, speed)
+      }
+  
+      if (entry.target == about) {
+        document.querySelector('.about-content').classList.add('slideFromBottom');
+        document.querySelector('.about-content').style.opacity = '1';
+
+        document.querySelector('.about-img-wrapper').classList.add('slideFromLeft');
+        document.querySelector('.about-img-wrapper').id = 'active';
+        document.querySelector('.about-content p').classList.add('slideFromRight');
+        document.querySelector('.about-content p').id = 'active';
+
+        animatedText = 'ABOUT ME';
+        element = document.querySelector('.about-title');
+        element.classList.add('word');
+        animate.call(animatedText);
+
+        animatedTextObserver.unobserve(about);
+      }
+
+      else if (entry.target == projects) {
+        document.querySelector('.projects-cont').classList.add('slideFromBottom');
+        document.querySelector('.projects-cont').style.opacity = '1';
+
+        document.querySelector('.projects-btns-cont').classList.add('slideFromLeft');
+        document.querySelector('.projects-btns-cont').id = 'active';
+        document.querySelector('.project-info-cont').classList.add('slideFromRight');
+        document.querySelector('.project-info-cont').id = 'active';
+
+
+        animatedText = 'PROJECTS';
+        element = document.querySelector('.projects-title');
+        element.classList.add('word');
+        animate.call(animatedText);
+
+        animatedTextObserver.unobserve(projects);
+      }
+
+      else if (entry.target == contact) {
+        document.querySelector('.contact-content').classList.add('slideFromBottom');
+        document.querySelector('.contact-content').style.opacity = '1';
+
+        document.querySelector('.contact-card-cont').classList.add('slideFromLeft');
+        document.querySelector('.contact-card-cont').id = 'active';
+        document.querySelector('.contact-form').classList.add('slideFromBottom');
+        document.querySelector('.contact-form').id = 'active';
+
+
+        animatedText = 'CONTACT';
+        element = document.querySelector('.contact-title');
+        element.classList.add('word');
+        animate.call(animatedText);
+
+        animatedTextObserver.unobserve(contact);
+      } 
+    }
+  });
+}
+
+let animatedTextOptions = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.40
+}
+
+let animatedTextObserver = new IntersectionObserver(typingAnimationHandle, animatedTextOptions);
+
+animatedTextObserver.observe(about);
+animatedTextObserver.observe(projects);
+animatedTextObserver.observe(contact);
+
+
+document.addEventListener('DOMContentLoaded', typingAnimationHome.call(document.querySelector('#name'), multWords[1]));
+
+document.querySelector('#container').addEventListener('scroll', () => {
+  document.querySelector('.scroll').style.display = 'none';
+});
+
+
+function scrollIntoViewHandler(event) {
+  if (event.target.id == 'home-btn') {
+    home.scrollIntoView({block: 'start', inline: 'nearest', behavior: 'smooth'});
+
+  }
+
+  if (event.target.id == 'about-btn') {
+    about.scrollIntoView({block: 'start', inline: 'nearest', behavior: 'smooth'});
+  }
+
+  else if (event.target.id == 'project-btn' || event.target.id == 'hero-project-btn' ) {
+    projects.scrollIntoView({block: 'start', inline: 'nearest', behavior: 'smooth'});
+  }
+
+  else if (event.target.id == 'contact-btn' || event.target.id == 'hero-contact-btn') {
+    contact.scrollIntoView({block: 'start', inline: 'nearest', behavior: 'smooth'});
+  }
+};
 
 
 
-/* document.addEventListener('DOMContentLoaded', letterEffect());
- */
+document.querySelectorAll('.nav-btn').forEach(btn => {
+  btn.addEventListener('click', scrollIntoViewHandler);
+});
+
+document.querySelector('#hero-project-btn').addEventListener('click', scrollIntoViewHandler);
+document.querySelector('#hero-contact-btn').addEventListener('click', scrollIntoViewHandler);
 
 
+
+
+let projectsArray = [];
+
+function project() {
+  this.name,
+  this.description,
+  this.screenshot,
+  this.html,
+  this.css,
+  this.js
+}
+
+projectsArray.push(new project('Admin Dashboard', 'Administrator dashboard', 'NA', true, true, false));
+
+
+
+console.log(projectsArray[0].name)

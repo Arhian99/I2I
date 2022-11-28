@@ -8,7 +8,7 @@
         <script src="index.js" defer></script>
 
         <script src="https://kit.fontawesome.com/95a6a0cdcd.js" crossorigin="anonymous"></script>
-
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Monda:wght@400;700&family=Play:wght@400;700&family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,400;0,500;0,900;1,100;1,400;1,900&family=Share+Tech&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -21,27 +21,49 @@
         <div id="container">
             <div class="header">
                 <div class="logo"><h1>AAR</h1></div>
-                <a href="#about" class="nav-btn">ABOUT</a>
-                <a href="#projects" class="nav-btn">PORTFOLIO</a>
-                <a href="#contact" class="nav-btn">CONTACT</a>
+                <a class="nav-btn" id="about-btn">ABOUT</a>
+                <a class="nav-btn" id="project-btn">PORTFOLIO</a>
+                <a class="nav-btn" id="contact-btn">CONTACT</a>
             </div>
+
+            <div class="media-header" id="home">
+                <div class="media-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                    <div class="media-menu-cont">
+                        <a class="nav-btn" id="home-btn">HOME</a>
+                        <a class="nav-btn" id="about-btn">ABOUT</a>
+                        <a class="nav-btn" id="project-btn">PORTFOLIO</a>
+                        <a class="nav-btn" id="contact-btn">CONTACT</a>
+                        <div class="contact-card-btns-cont">
+                            <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file"></i></a>
+                            <a href="https://www.linkedin.com/in/arhianalbis" target="_blank" rel="noreferrer noopener"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="https://github.com/Arhian99" target="_blank" rel="noreferrer noopener"><i class="fa-brands fa-github"></i></a>
+                        </div>       
+                    </div>
+                </div>
+                <div class="logo"><h1>AAR</h1></div>
+
+            </div>
+            
+
+          
 
             <section id="hero">
                 <p id="hello">Hello, World!</p>
                 <p id="name"><!-- I'm Arhian Albis Ramos --></p>
                 <p id="description">
-<!--                     A self-taught web developer who is passionate about solving problems and building things with code.
+                    A self-taught web developer who is passionate about solving problems and building things with code.
                     I am currently looking for new opportunities. Take a look around at some of the projects I've built! <span id="humor">(including this very website)</span>
- -->                </p>
+                </p>
 
                 <div class="hero-btns-cont">
-                    <a href="#projects-cont" id="hero-project-btn"><!-- PROJECTS --></a>
-                    <a href="http://" id="hero-resume-btn"><!-- RESUME --></a>
+                    <a id="hero-project-btn">PROJECTS</a>
+                    <a href="http://" id="hero-resume-btn">RESUME</a>
+                    <a id="hero-contact-btn">CONTACT</a>
+
                 </div>
 
-            <section class="scroll">
-                <a href="#about"><span></span></a>
-            </section>
+            <div class="scroll"><a href="#about"><span></span></a></div>
             </section>
 
             <div class="sidebar-left">
@@ -54,22 +76,9 @@
                 <a href="mailto:arhianalbis7@gmail.com" target="_blank" rel="noreferrer noopener"><i class="fa-solid fa-envelope"></i></a>
             </div>
 
-
-            <!-- <div class="fonts">
-                <p id="monda">This is MONDA</p>
-                <p id="play">This is PLAY</p>
-                <p id="press-start">This is PRESS START</p>
-                <p id="roboto">This is ROBOTO</p>
-                <p id="share">This is SHARE TECH</p>
-                <p id="share-mono">This is SHARE TECH MONO</p>
-                <br>
-                <p id="futura">This is FUTURA</p>
-                <p id="quartz">This is QUARTZ</p>
-                <p id="ocr">This is OCR-A</p>
-            </div> -->
             <section id="about">
-                <h1 class="about-title">
-                    ABOUT ME
+                <h1 class="about-title" id="about-nav">
+                    <!-- ABOUT ME -->
                 </h1>
 
                 <div class="about-content">                 
@@ -87,45 +96,48 @@
 
             <section id="projects">
                 <h1 class="projects-title">
-                    PROJECTS
+                    <!-- PROJECTS -->
                 </h1>
-                <div class="projects-content">
-                    <div class="projects-cont" id="projects-cont">
-                        <div class="projects-btns-cont">
-                            <button><!-- <span><img src="./assets/icons/caret-right-solid.svg" alt="caret icon pointing right bulletpoint" srcset="" class="projects-btns-before"></span> -->PLACEHOLDER</button>
-                            <button><!-- <span><img src="./assets/icons/caret-right-solid.svg" alt="caret icon pointing right bulletpoint" srcset="" class="projects-btns-before"></span> -->PLACEHOLDER</button>
-                            <button><!-- <span><img src="./assets/icons/caret-right-solid.svg" alt="caret icon pointing right bulletpoint" srcset="" class="projects-btns-before"></span> -->PLACEHOLDER</button>
-                            <button><!-- <span><img src="./assets/icons/caret-right-solid.svg" alt="caret icon pointing right bulletpoint" srcset="" class="projects-btns-before"></span> -->PLACEHOLDER</button>
-                            <button><!-- <span><img src="./assets/icons/caret-right-solid.svg" alt="caret icon pointing right bulletpoint" srcset="" class="projects-btns-before"></span> -->PLACEHOLDER</button>
-                            <button><!-- <span><img src="./assets/icons/caret-right-solid.svg" alt="caret icon pointing right bulletpoint" srcset="" class="projects-btns-before"></span> -->PLACEHOLDER</button>
-                            <div class="tab"></div>
+                <div class="projects-cont" id="projects-cont">
+                    <div class="projects-btns-cont">
+                        <button>PLACEHOLDER</button>
+                        <button>PLACEHOLDER</button>
+                        <button>PLACEHOLDER</button>
+                        <button>PLACEHOLDER</button>
+                        <button>PLACEHOLDER</button>
+                        <button>PLACEHOLDER</button>
+                        <button>PLACEHOLDER</button>
+                        <button>PLACEHOLDER</button>
+                        <div class="tab"></div>
+                    </div>
 
+                    <div class="project-info-cont">
+                        <div class="project-screenshot">
+                            <img src="" alt="placeholder" srcset="">
+                            <div class="next-btn"><span class="material-symbols-outlined">arrow_forward_ios</span></div>
+                            <div class="prev-btn"><span class="material-symbols-outlined">arrow_back_ios</span></div>
                         </div>
-                        <div class="project-info-cont">
-                            <div class="project-screenshot">
-                            </div>
 
-                            <div class="project-info">
-                                <p class="project-title">
-                                    PROJECT TITLE
-                                </p>
-                                <p class="project-desc">
-                                    Ipsum Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque maiores quis deserunt quidem facere excepturi eveniet vel, omnis nam culpa tempora ullam laudantium non sequi maxime! Iusto placeat beatae nostrum?
-                                </p>
-                                <div class="tags-cont">
-                                    <img src="./assets/icons/html5.svg" alt="html icon" class="tags" id="html">
-                                    <img src="./assets/icons/css3-alt.svg" alt="CSS3 Icon" srcset="" class="tags" id="css">
-                                    <img src="./assets/icons/js.svg" alt="javsacript icon" srcset="" class="tags" id="js">
-                                </div>
+                        <div class="project-info">
+                            <p class="project-title">
+                                PROJECT TITLE
+                            </p>
+                            <p class="project-desc">
+                                Ipsum Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque maiores quis deserunt quidem facere excepturi eveniet vel, omnis nam culpa tempora ullam laudantium non sequi maxime! Iusto placeat beatae nostrum?
+                            </p>
+                            <div class="tags-cont">
+                                <img src="./assets/icons/html5.svg" alt="html icon" class="tags" id="html">
+                                <img src="./assets/icons/css3-alt.svg" alt="CSS3 Icon" srcset="" class="tags" id="css">
+                                <img src="./assets/icons/js.svg" alt="javsacript icon" srcset="" class="tags" id="js">
                             </div>
+                        </div>
                             
-                        </div>
                     </div>
                 </div>
             </section>
 
             <section id="contact">
-                <h1 class="contact-title">Contact</h1>
+                <h1 class="contact-title"><!-- Contact --></h1>
 
                 <div class="contact-content">
                     <div class="contact-card-cont">
@@ -160,9 +172,8 @@
                 </div>
                 
                 <section id="footer">
-                    <div class="logo"><h1>AAR </h1> <!-- <i class="fa-regular fa-copyright"> --></i></div>
-<!--                     <h1 class="footer-name">Arhian Albis Ramos <i class="fa-regular fa-copyright"></i> 2022</h1> 
- -->                </section>
+                    <div class="logo"><h1>AAR </h1></div>
+                </section>
             </section>
 
             
