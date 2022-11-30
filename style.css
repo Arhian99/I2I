@@ -98,10 +98,14 @@ html {
     --green: #328734;
     --brown: #ddbcb7;
     --yellow: #e4d673;
-    --opaque-grey: #cbcec261 /* turn to filter notation so it can be applied to 'tags' html/css/js under projects */
-
+    --opaque-grey: #cbcec21e /* turn to filter notation so it can be applied to 'tags' html/css/js under projects */
+    
     --transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
-    --svg-filter-grey: invert(99%) sepia(3%) saturate(827%) hue-rotate(18deg) brightness(87%) contrast(83%);
+    --svg-filter-grey: invert(99%) sepia(2%) saturate(932%) hue-rotate(23deg) brightness(85%) contrast(90%);
+    --html-color-filter: invert(56%) sepia(75%) saturate(3568%) hue-rotate(344deg) brightness(96%) contrast(97%);
+    --css-color-filter: invert(50%) sepia(94%) saturate(378%) hue-rotate(153deg) brightness(97%) contrast(91%);
+    --js-color-filter: invert(98%) sepia(66%) saturate(2519%) hue-rotate(323deg) brightness(104%) contrast(101%);
+
 }
 
 
@@ -747,7 +751,7 @@ body {
 
 
 /* START: APPLY THIS STYLE ON CLICK/ WHEN SELECTED */
-.projects-btns-cont button:nth-child(3) {
+#projects-btns-active {
     color: var(--red);
 }
 
@@ -759,14 +763,13 @@ body {
     box-shadow: 0px 0px 5px 1px red;
     border-radius: 30px;
     position: absolute;
-    top: 120px;
+    top: 0px;
 }
 /* END: APPLY THIS STYLE ON CLICK/ WHEN SELECTED */
 
 
-.projects-btns-cont button:hover {
+.projects-btns-cont button:hover, #projects-btns-active:hover {
     background-color: #e950354f;
-    color: white;
     cursor: pointer;
 }
 
@@ -778,15 +781,20 @@ body {
 
 .project-info {
     background-color: var(--black);
-    padding: 1vh 0 0 0;
+    /* padding: 1vh 0 0 0; */
 }
 .project-screenshot {
     width: 100%;
-    height: 70vh;
+    height: min-content;
 
-
-    background-color: white;
+    margin: 0;
+    padding: 0;
     position: relative;
+}
+
+.project-screenshot img {
+    width: 100%;
+    height: 100%;
 }
 
 .next-btn, .prev-btn {
@@ -800,7 +808,7 @@ body {
     border-radius: 50px;
     background-color: #cbcec27b;
     position: absolute;
-    bottom: 40%;
+    bottom: 50%;
     cursor: pointer;
 
     display: none;
@@ -861,16 +869,16 @@ body {
 }
 
 #html {
-    filter: invert(56%) sepia(75%) saturate(3568%) hue-rotate(344deg) brightness(96%) contrast(97%);    /* #f26528 */
+    filter: var(--html-color-filter);    /* #f26528 */
 }
 
 #css {
-    filter: invert(50%) sepia(94%) saturate(378%) hue-rotate(153deg) brightness(97%) contrast(91%);    /* #2faadf */
+    filter: var(--css-color-filter);    /* #2faadf */
 }
 
 #js {
-    filter: invert(98%) sepia(66%) saturate(2519%) hue-rotate(323deg) brightness(104%) contrast(101%);
-    /* #ffd93b */
+    filter: var(--js-color-filter); /* #ffd93b */
+    opacity: 15%;
 }
 
 /* .projects-btns-before {
