@@ -93,6 +93,9 @@ function typingAnimationHandle(entries, observer) {
         document.querySelector('.about-img-wrapper').id = 'active';
         document.querySelector('.about-content p').classList.add('slideFromRight');
         document.querySelector('.about-content p').id = 'active';
+        document.querySelector('.about-learn-cont').classList.add('slideFromLeft');
+        document.querySelector('.about-learn-cont').id = 'active';
+
 
         animatedText = 'ABOUT ME';
         element = document.querySelector('.about-title');
@@ -171,7 +174,7 @@ function scrollIntoViewHandler(event) {
     about.scrollIntoView({block: 'start', inline: 'nearest', behavior: 'smooth'});
   }
 
-  else if (event.target.id == 'project-btn' || event.target.id == 'hero-project-btn' ) {
+  else if (event.target.id == 'project-btn' || event.target.id == 'hero-project-btn' || event.target.id == 'about-learn-projectLink') {
     projects.scrollIntoView({block: 'start', inline: 'nearest', behavior: 'smooth'});
   }
 
@@ -180,7 +183,7 @@ function scrollIntoViewHandler(event) {
   }
 };
 
-
+document.querySelector('#about-learn-projectLink').addEventListener('click', scrollIntoViewHandler);
 
 document.querySelectorAll('.nav-btn').forEach(btn => {
   btn.addEventListener('click', scrollIntoViewHandler);

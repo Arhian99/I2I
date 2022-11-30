@@ -25,63 +25,7 @@ font-family: 'Share Tech Mono', monospace;
     src: url(./assets/fonts/ocr-a/OCR-ABT.ttf);
 }
 
-.fonts {
-    background-color: var(--black);
-}
 
-#monda {
-    font-family: 'Monda', sans-serif;
-    font-size: 2rem;
-    color: white;
-}
-
-#play {
-    font-family: 'Play', sans-serif;
-    font-size: 2rem;
-    color: white;
-}
-
-#press-start {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 2rem;
-    color: white;
-}
-
-#roboto {
-    font-family: 'Roboto', sans-serif;
-    font-size: 2rem;
-    color: white;
-}
-
-#share {
-    font-family: 'Share Tech', sans-serif;
-    font-size: 2rem;
-    color: white;
-}
-
-#share-mono {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 2rem;
-    color: white;
-}
-
-#futura {
-    font-family: 'futura';
-    font-size: 2rem;
-    color: white;
-}
-
-#quartz {
-    font-family: 'quartz';
-    font-size: 2rem;
-    color: white;
-}
-
-#ocr {
-    font-family: 'ocr-a';
-    font-size: 2rem;
-    color: white;
-}
 
 html {
     width: 100%;
@@ -611,12 +555,6 @@ body {
     background-color: var(--black);
     color: white;
     margin: 40vh 15vw 40vh 11vw;
-/*     padding-top: 5vh;
- */
- 
- /*     scroll-snap-align: start;
- */
-
 
 }
 
@@ -639,7 +577,7 @@ body {
 .about-content {
     font-family: 'roboto';
     font-size: 0.8rem;
-    line-height: 1.3rem;
+    line-height: 1.1rem;
     opacity: 0;
 
 }
@@ -685,14 +623,50 @@ body {
     margin: 0;
 }
 
+.highlight {
+    color: #e94f35;
+    font-weight: 500;
+}
+
+a.highlight {
+    cursor: pointer;
+    text-decoration: underline;
+    border-radius: 15px;
+    padding: 0 4px;
+}
+
+a.highlight:hover {
+    box-shadow: 0px 0px 5px 1px red;
+
+}
+
+
+.about-learn-cont {
+    border: 1px solid var(--red);
+    border-radius: 15px;
+    opacity: 0;
+
+    max-width: 825px;
+
+    margin-top: 5vh;
+    padding: 15px 30px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 5px 1px red;
+
+
+}
+
+.about-learn-cont * {
+    max-width: 825px;
+    margin: 0;
+    padding: 0;
+}
 
 
 #projects {
     margin: 40vh 11vw;
     color: white;
-    padding: 5vh 0;
-/*     scroll-snap-align: start;
- */    
+    padding: 5vh 0;    
 
 }
 
@@ -1555,5 +1529,4 @@ top of the project screen and the project title is no longer visible.
 
 >> make the logo animated such that it opens up and the letters come out of the two borders
 
->> FIX RESUME LINKS!!!
 */
